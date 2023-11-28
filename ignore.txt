@@ -1,0 +1,26 @@
+def generate_post():
+    if request.method == "POST":
+        topic = request.form["topic"]
+        tone = request.form["tone"]
+        keywords = request.form["keywords"]
+
+        # Construct the prompt with additional details
+        prompt = f"Create a social media post about {topic} with a {tone} tone. Keywords: {keywords}."
+
+        try:
+            response = openai.Completion.create(
+                engine="gpt-3.5-turbo",  # Adjust the model as per your requirement
+                prompt=prompt,
+                temperature=0.7,
+                max_tokens=100
+            )
+            generated_post = response.choices[0].text.strip()
+
+        except Exception as e:
+            # Handle any errors from the API call
+            return render_template("error.html", error_message=str(e))
+
+        return render_template("result.html", post=generated_post)
+
+    # Render the form for initial GET request
+    return render_template("generate.html")

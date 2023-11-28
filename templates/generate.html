@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Post</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Generate Your Social Media Post</h1>
+      </header>
+      <nav>
+        <ul>
+          <li>
+            <a href="../templates/index.html"> Home </a>
+          </li>
+          <li>
+            <a href="../templates/generate.html" class="active">
+              Generate Post
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <main>
+        <form action="/generate.html" method="post" class="post-form">
+          <div class="form-group">
+            <label for="topic">Topic:</label>
+            <input
+              type="text"
+              id="topic"
+              name="topic"
+              placeholder="Enter a topic"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="keywords">Keywords:</label>
+            <input
+              type="text"
+              id="keywords"
+              name="keywords"
+              placeholder="Enter some keywords"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="tone">Tone:</label>
+            <select id="tone" name="tone">
+              <option value="informative">Informative</option>
+              <option value="casual">Casual</option>
+              <option value="formal">Formal</option>
+              <!-- Add more tones as needed -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" value="Generate Post" class="btn" />
+          </div>
+        </form>
+      </main>
+      <footer>
+        <p>&copy; 2023 Social Media Post Generator</p>
+      </footer>
+    </div>
+  </body>
+</html>
