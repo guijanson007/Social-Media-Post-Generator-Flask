@@ -30,12 +30,12 @@ def generate():
         model="dall-e-3",
         prompt=generate_image(topic,keywords),
         size="1024x1024",
-        quality="hd",
         style = "natural",
         n=1,
         )
         response_image = image.data[0].url
-        return render_template("result.html", result=result_caption, image=response_image)
+
+        return render_template("result.html", result=result_caption, image =response_image)
         
     result = request.args.get("result")
     return render_template("generate.html")
