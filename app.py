@@ -30,6 +30,7 @@ def generate():
         model="dall-e-3",
         prompt=generate_image(topic,keywords),
         size="1024x1024",
+        quality = "standard",
         style = "natural",
         n=1,
         )
@@ -46,10 +47,10 @@ def result(result, image):
 
 
 def generate_prompt(topic, tone, keywords):
-    return f"Create an instagram's caption for a post about {topic} with a {tone} tone. Keywords: {keywords}. Please be objective"
+    return f"Create an instagram's caption for a post with this prompt: {topic} , with a {tone} tone. Keywords: {keywords}. Please be objective"
 
 def generate_image(topic,keywords):
-  return f"Create an image for a social media post about {topic}. Useful keywords for the image are: {keywords}. If there are words used in the image, please make sure they are properly arranged and form valid english words."
+  return f"Create an image for an instagram post with this prompt: {topic}. Useful keywords for the image are: {keywords}."
 
 if __name__ == "__main__":
     app.run(debug=True)
